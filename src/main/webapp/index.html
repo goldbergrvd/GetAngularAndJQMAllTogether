@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app='PhoneApp'>
+	<head>
+		<meta charset='UTF-8' />
+		<title>Phone List</title>
+		<link rel='stylesheet' href='http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.css' />
+		<script src='http://code.jquery.com/jquery-1.11.1.min.js'></script>
+		<script src='http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js'></script>
+		<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.min.js'></script>
+		<script src='js/phones.js'></script>
+		<meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
+	</head>
+	<body ng-controller='PhoneCtrl'>
+		<div data-role='page' data-theme='a'>
+			<div data-role='header'>
+				<h1>jQuery Mobile</h1>
+			</div>
+			<div data-role='content'>
+				Search: <input ng-model='query'>
+				Sort by:
+				<select ng-model='orderProp'>
+					<option value='name'>Alphabetical</option>
+					<option value='age'>Newest</option>
+				</select>
+
+				<ul class='phones' data-role='listview' data-inset='true' data-divider-theme='b'>
+					<li data-role='list-divider'>Phone List</li>
+					<li ng-repeat="phone in phones | filter:query | orderBy:orderProp" class="thumbnail">
+						<a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}"></a>
+						<a href="#/phones/{{phone.id}}">{{phone.name}}</a>
+						<p>{{phone.snippet}}</p>
+					</li>
+				</ul>
+			</div>
+			<div data-role='footer'>
+				<h4>&copy; 2014 Phone List @Taiwan</h4>
+			</div>
+		</div>
+	</body>
+</html>
