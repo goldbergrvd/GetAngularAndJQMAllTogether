@@ -11,11 +11,17 @@
 		<meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
 	</head>
 	<body ng-controller='PhoneCtrl'>
-		<div data-role='page' data-theme='a'>
+		<div id='index'
+			data-role='page'
+			data-theme='a'
+			data-add-back-btn='true'>
+
 			<div data-role='header'>
 				<h1>jQuery Mobile</h1>
 			</div>
 			<div data-role='content'>
+				<a href='./dialog.html' data-role='button'>Go to dialog!</a>
+				<a href='./list.html' data-role='button'>Go to list!</a>
 				Search: <input ng-model='query'>
 				Sort by:
 				<select ng-model='orderProp'>
